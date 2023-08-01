@@ -48,14 +48,7 @@ app.post("/api/notes", (req, res) => {
     })
 })
 
-// create delete routes
-app.get("/api/notes", (req, res) => {
-    fs.readFile("./db/db.json", "utf-8", (err, data) => {
-        const db = JSON.parse(data)
 
-        res.json(db)
-    })
-})
 
 app.listen(PORT, () => {
     // console.log("Server is running on PORT " + PORT)
