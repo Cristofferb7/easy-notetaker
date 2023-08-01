@@ -4,7 +4,7 @@ const app = express(); // use the package to create a server called "app"
 const path = require("path")
 const fs = require("fs")
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001 ;
 
 // middlewares
 app.use(express.static("public"));
@@ -45,6 +45,15 @@ app.post("/api/notes", (req, res) => {
             res.json(db)
         })
         
+    })
+})
+
+// create delete routes
+app.get("/api/notes", (req, res) => {
+    fs.readFile("./db/db.json", "utf-8", (err, data) => {
+        const db = JSON.parse(data)
+
+        res.json(db)
     })
 })
 
